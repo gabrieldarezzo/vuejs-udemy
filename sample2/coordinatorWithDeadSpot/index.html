@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Samples VueJs</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>    
+
+    <style>
+        html {
+            padding: 0px;
+            margin: 0px;
+            min-height:100%;
+            position:relative;
+        }
+        
+        body {
+            padding: 0px;
+            margin: 0px;
+            height:100%; /* force the BODY element to match the height of the HTML element */
+        }
+        .container {
+            padding: 10px;
+            position:absolute;
+            top:0;
+            bottom:0;
+            left:0;
+            right:0;
+            overflow:hidden;            
+        }
+    </style>
+</head>
+<body>
+
+<div id="app" v-on:mousemove="updateCoordinates" class="container">
+    <button @click="increase(2, $event)">Click me</button>    
+    <p>{{counter}}</p>
+    <p>Coodinates of Mouse: {{x}} / {{y}}</p>    
+
+    <div v-on:mousemove.stop>DEAD SPOT</div>
+</div>
+
+<script>
+new Vue({
+    el: '#app',
+    data: {
+        counter: 0,
+        x: 0,
+        y: 0
+        
+    },
+    methods : {
+        increase(qntCounter, event) {
+            console.log(event)
+            this.counter += qntCounter;
+        },
+        updateCoordinates(event) {
+            this.x = event.clientX;
+            this.y = event.clientY;            
+        }
+
+    }});
+
+</script>
+</body>
+</html>

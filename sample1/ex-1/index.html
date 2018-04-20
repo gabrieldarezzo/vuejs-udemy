@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Samples VueJs</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>    
+</head>
+<body>
+
+
+<div id="app">    
+    <p>{{fullName}} has {{age}} years old</p>
+    <hr>
+    <p>Age * 3 = {{parseInt(age) * 3}}</p>
+
+    <p>Random number ( 0 ~ 10 ) is: {{getRandomNumber()}}</p>
+
+    <p>Random Boolean {{getRandomBoolean()}}</p>
+    <p>Random Img: <img :src="getRandomImgSrc()" alt="Random Imag"></p>
+
+    <div>
+        <input type="text" v-model="fullName">
+    </div>
+    {{fullName}}
+
+    
+    
+
+</div>
+
+
+
+<script>
+new Vue({
+    el: '#app',
+    data: {
+        age: '25',
+        fullName: 'Gabriel Darezzo'
+        
+    }, methods : {
+        getRandomNumber: function() {
+            return Math.floor(Math.random() * 11);
+        },
+        getRandomBoolean: function() {
+            return Math.floor(Math.random());
+        },
+        getRandomImgSrc: function() {
+            //?_={n} is guarantee to be alwayes a new img
+            const randomCache = Math.floor(Math.random() * 500);
+            return `https://picsum.photos/300/200/?_=${randomCache}`;
+        }        
+    }
+
+
+});
+
+</script>
+</body>
+</html>
